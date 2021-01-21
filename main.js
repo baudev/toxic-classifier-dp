@@ -54,16 +54,23 @@ submit_button_dom.onclick = async () => {
     })
 
     // shows the classes
+    let counter = 0;
     for (let i = 0; i < classes.length; i++) {
         let th = document.createElement("th");
         th.textContent = classes[i];
         estimated_probabilities_classe_names.appendChild(th);
 
         if (probabilities[i] > 0.5) {
+            counter++;
             let p = document.createElement("p");
             p.textContent = classes[i];
             classes_dom.appendChild(p);
         }
+    }
+
+    if(counter === 0) {
+        // the text is not toxic
+        M.toast({html: 'Congratulations, your sentence is not toxic!', classes: 'green'});
     }
 
     // draws the chart
