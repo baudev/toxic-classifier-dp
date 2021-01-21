@@ -1,0 +1,99 @@
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Toxic comment classifier</title>
+    <nav>
+        <div class="nav-wrapper orange">
+            <a href="#" class="brand-logo center">TOXIC COMMENT CLASSIFIER</a>
+        </div>
+    </nav>
+</head>
+<body>
+<div id="container">
+    <div class="row">
+        <div class="col m6 offset-m3 s12" style="margin-top: 30px;">
+            <h5 class="light">This is a deep learning model trained using
+                <a href="https://www.tensorflow.org/"
+                   target="_blank">Tensorflow</a> to identify
+                and classify toxic online comments. The dataset comes from Kaggle and can be found
+                <a href="https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/data" target="_blank">here</a>.
+            </h5>
+            <h4>Try our model!</h4>
+            <div class="row" style="margin-top: 30px;">
+                <div class="input-field col s12 m8 offset-m1">
+                    <input id="sentence_input" type="text">
+                    <label for="sentence_input">Your sentence to be analysed</label>
+                </div>
+                <div>
+                    <p class="center-align">
+                        <a class="waves-effect waves-light btn-large orange" id="submit_button">
+                            <i class="material-icons right">send</i>SUBMIT
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="center-align" id="loader" style="display: none;">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="light">Loading...</p>
+            </div>
+            <div id="results" style="display: none;">
+                <h4>Results:</h4>
+                <div class="row">
+                    <div class="col s12 m3">
+                        <div class="card" style="height: 210px">
+                            <div class="card-content">
+                                <span class="card-title">Classes</span>
+                                <div style="font-weight: 500" id="classes"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m9">
+                        <div class="card" style="min-height: 210px">
+                            <div class="card-content">
+                                <span class="card-title">Estimated Probabilities</span>
+                                <table class="highlight centered responsive-table">
+                                    <thead>
+                                    <tr id="estimated_probabilities_classe_names"></tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr id="estimated_probabilities"></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-content">
+                                <span class="card-title">Graphic representation of estimated probabilities</span>
+                                <canvas id="chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.8.5/dist/tf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
